@@ -1,5 +1,10 @@
-import torch
-print(torch.cuda.is_available())
-print(torch.cuda.current_device())
-print(torch.cuda.get_device_name(torch.cuda.current_device()))
-asd
+from ultralytics import YOLO
+
+model = YOLO('yolov8x')  # Load model
+
+results = model.predict('vid_in/08fd33_4.mp4', save=True)
+
+print(results[0])
+for box in results[0].boxes:
+    print(box)
+    break
